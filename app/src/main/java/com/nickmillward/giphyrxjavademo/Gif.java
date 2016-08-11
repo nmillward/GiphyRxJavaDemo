@@ -5,10 +5,10 @@ package com.nickmillward.giphyrxjavademo;
  */
 public class Gif {
 
-    private String randomGif;
+    private String image_url;
 
     public String getRandomGif() {
-        return randomGif;
+        return image_url;
     }
 
 }
