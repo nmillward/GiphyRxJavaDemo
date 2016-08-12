@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.nickmillward.giphyrxjavademo.Model.Gif;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.iv_gif) ImageView iv_gif;
     @BindView(R.id.btn_new_gif) Button btn_new_gif;
+    @BindView(R.id.tv_gif) TextView tv_gif;
 
     private CompositeSubscription subscription;
 
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Gif gif) {
-//                                iv_gif.setImageResource(Integer.parseInt(gif.getRandomGif()));
+                                tv_gif.setText(gif.getData().getRandomGif());
                             }
                         });
             }

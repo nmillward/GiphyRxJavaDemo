@@ -1,5 +1,7 @@
 package com.nickmillward.giphyrxjavademo;
 
+import com.nickmillward.giphyrxjavademo.Model.Gif;
+
 import retrofit2.http.GET;
 import rx.Observable;
 
