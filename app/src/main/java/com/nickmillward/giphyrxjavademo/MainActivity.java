@@ -54,7 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Gif gif) {
-                                Glide.with(MainActivity.this).load(gif.getData().getFixed_height_downsampled_url()).into(iv_gif);
+                                Glide.with(MainActivity.this)
+                                        .load(gif.getData().getFixed_height_downsampled_url())
+                                        .thumbnail( 0.1f )
+                                        .into(iv_gif);
                                 tv_gif.setText("Giphy URL: " + gif.getData().getRandomGif());
                             }
                         });
