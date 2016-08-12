@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.nickmillward.giphyrxjavademo.Model.Gif;
 
 import butterknife.BindView;
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Gif gif) {
-                                tv_gif.setText(gif.getData().getRandomGif());
+                                Glide.with(MainActivity.this).load(gif.getData().getFixed_height_downsampled_url()).into(iv_gif);
+                                tv_gif.setText("Giphy URL: " + gif.getData().getRandomGif());
                             }
                         });
             }
