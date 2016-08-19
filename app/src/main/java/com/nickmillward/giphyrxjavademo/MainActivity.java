@@ -55,16 +55,17 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Gif gif) {
-                                // Use gif thumbnail provided by Giphy
+                                // Glide request without '.into()' for Giphy still thumbnail
                                 DrawableRequestBuilder<String> thumbnailRequest = Glide
                                         .with(MainActivity.this)
                                         .load(gif.getData().getFixed_height_small_still_url());
 
+                                // Pass thumbnail request as the thumbnail parameter
                                 Glide.with(MainActivity.this)
                                         .load(gif.getData().getFixed_height_downsampled_url())
                                         .thumbnail( thumbnailRequest )
                                         .into(iv_gif);
-                                
+
                                 tv_gif.setText("Giphy URL: " + gif.getData().getRandomGif());
                             }
                         });
