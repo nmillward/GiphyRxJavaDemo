@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.nickmillward.giphyrxjavademo.Model.Gif;
 
@@ -54,10 +55,16 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Gif gif) {
+                                // Use gif thumbnail provided by Giphy
+                                DrawableRequestBuilder<String> thumbnailRequest = Glide
+                                        .with(MainActivity.this)
+                                        .load(gif.getData().getFixed_height_small_still_url());
+
                                 Glide.with(MainActivity.this)
                                         .load(gif.getData().getFixed_height_downsampled_url())
-                                        .thumbnail( 0.1f )
+                                        .thumbnail( thumbnailRequest )
                                         .into(iv_gif);
+                                
                                 tv_gif.setText("Giphy URL: " + gif.getData().getRandomGif());
                             }
                         });
