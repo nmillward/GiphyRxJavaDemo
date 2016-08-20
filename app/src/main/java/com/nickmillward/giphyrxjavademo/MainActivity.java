@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                                         .with(MainActivity.this)
                                         .load(gif.getData().getFixed_height_small_still_url());
 
-                                // Pass thumbnail request as the thumbnail parameter
+                                // Pass thumbnailRequest as the thumbnail parameter
                                 // Once resource has loaded successfully, hide progressBar
                                 Glide.with(MainActivity.this)
                                         .load(gif.getData().getFixed_height_downsampled_url())
