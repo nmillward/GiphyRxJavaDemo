@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.DrawableRequestBuilder;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.iv_gif) ImageView iv_gif;
     @BindView(R.id.btn_new_gif) Button btn_new_gif;
     @BindView(R.id.tv_gif) TextView tv_gif;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
 
     private CompositeSubscription subscription;
 
@@ -51,10 +53,14 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onError(Throwable e) {
                                 Log.v("MAIN ACTIVITY", "onError reached " + e);
+                                progressBar.setVisibility(View.GONE);
                             }
 
                             @Override
                             public void onNext(Gif gif) {
+
+                                progressBar.setVisibility(View.VISIBLE);
+
                                 // Glide request without '.into()' for Giphy still thumbnail
                                 DrawableRequestBuilder<String> thumbnailRequest = Glide
                                         .with(MainActivity.this)
