@@ -61,16 +61,21 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Gif gif) {
-
                                 progressBar.setVisibility(View.VISIBLE);
 
-                                // Glide request without '.into()' for Giphy still thumbnail
+                                /**
+                                 * Glide request without '.into()' for Giphy still thumbnail
+                                 * Add BlurTransformation to the thumbnail§
+                                 */
                                 DrawableRequestBuilder<String> thumbnailRequest = Glide
                                         .with(MainActivity.this)
-                                        .load(gif.getData().getFixed_height_small_still_url());
+                                        .load(gif.getData().getFixed_height_small_still_url())
+                                        .bitmapTransform(new jp.wasabeef.glide.transformations.BlurTransformation(MainActivity.this, 25));
 
-                                // Pass thumbnailRequest as the thumbnail parameter
-                                // Once resource has loaded successfully, hide progressBar
+                                /**
+                                 * Pass thumbnailRequest as the thumbnail parameter
+                                 * Once resource has loaded successfully, hide progressBar
+                                 */
                                 Glide.with(MainActivity.this)
                                         .load(gif.getData().getFixed_height_downsampled_url())
                                         .thumbnail(thumbnailRequest)
